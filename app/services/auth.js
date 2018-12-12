@@ -16,5 +16,7 @@ export default Service.extend({
     });
 
     // setar o token com o user.token
+
+    // TODO setar token na store para ser recuperada por um serviço de request
   },
 });
