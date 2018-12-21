@@ -15,8 +15,6 @@ export default Service.extend({
       body: JSON.stringify({ email, password}),
     });
 
-    // setar o token com o user.token
-
-    // TODO setar token na store para ser recuperada por um serviço de request
+    this.get('store').set('token', user.token);
   },
 });

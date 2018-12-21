@@ -1,3 +1,65 @@
+button:hover {
+  cursor: pointer;
+}
+
+.primary {
+  background-color: #3b5998;
+  color: white;
+}
+
+.primary:hover {
+  background-color: #6897bb;
+  color: white;
+}
+
+.app-button {
+  display: block;
+  margin: 5em auto auto auto;
+  height: 2em;
+  width: auto;
+  border: 1px solid #cccccc;
+  border-radius: 5px;
+  padding: auto;
+}
+
+.app-input {
+  display: block;
+  margin: 1em auto 2em auto;
+  width: 90%;
+  height: 2em;
+  border: 1px solid #cccccc;
+  border-radius: 5px;
+  padding-left: 2%;
+  padding-right: 1%;
+}
+
 .app-login-form {
-  border: 1px solid black;
+  border: 1px solid #cccccc;
+  border-radius: 5px;
+  margin: 2em auto auto auto;
+  width: 20em;
+  padding: 2em 1em;
+}
+
+.app-login-form .app-input {
+  padding-left: 30px;
+}
+
+.app-login-form .app-input.login-email {
+  background: url('/assets/images/email-icon.png');
+  background-repeat: no-repeat;
+  background-position: 7px 7px;
+}
+
+.app-login-form .app-input.login-password {
+  background: url('/assets/images/asterisk-icon.png');
+  background-repeat: no-repeat;
+  background-position: 7px 7px;
+}
+
+.app-login-form .app-button {
+  height: 30px;
+  width: 100px;
+  font-size: 16px;
+  font-weight: bold;
 }

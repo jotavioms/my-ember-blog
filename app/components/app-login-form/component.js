@@ -26,24 +26,25 @@ export default Component.extend({
           password: userPassword,
         });
       } catch(exception) {
-        console.log(exception);
+        alert(exception);
       }
-
     },
   },
 
   layout: hbs`
     {{app-input
       value=userEmail
-      className='login-email'
+      classNames='login-email'
       type='email'
+      placeholder='Email'
     }}
     {{app-input
       value=userPassword
-      className='login-password'
+      classNames='login-password'
       type='password'
+      placeholder='Password'
     }}
-    {{#app-button click=(action 'login')}}
+    {{#app-button click=(action 'login') classNames='primary'}}
       Login
     {{/app-button}}
   `,
