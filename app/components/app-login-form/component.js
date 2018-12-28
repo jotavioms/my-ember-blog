@@ -3,6 +3,7 @@ import hbs from 'htmlbars-inline-precompile';
 import {inject as service} from '@ember/service';
 
 export default Component.extend({
+  store: service(),
   auth: service(),
 
   classNames: [
@@ -16,15 +17,24 @@ export default Component.extend({
     async login() {
       const {
         auth,
+        store,
         userEmail,
         userPassword,
-      } = this.getProperties('auth','userEmail','userPassword');
+      } = this.getProperties('auth','store','userEmail','userPassword');
 
       try {
         await auth.login({
           email: userEmail,
           password: userPassword,
         });
+
+        debugger;
+
+        if(store.get('token')) {
+          debugger;
+          alert('tem token');
+        }
+
       } catch(exception) {
         alert(exception);
       }

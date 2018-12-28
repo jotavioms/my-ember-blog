@@ -5,14 +5,14 @@ export default Service.extend({
   store: service(),
 
   async request(url, ...params) {
-    const store = this.get('store');
-    const adapter = store.adapterFor('application');
-    const urlPath = `${adapter.get('host')}/${url}`;
-    const token = store.get('token');
+    debugger;
 
-    await fetch(urlPath, {
+    const adapter = this.get('store').adapterFor('application');
+    const urlPath = `${adapter.get('host')}/${url}`;
+
+    return await fetch(urlPath, {
       method: 'post',
-      body: JSON.stringify(...params),
+      body: JSON.stringify(params[0]),
     });
   },
 });
