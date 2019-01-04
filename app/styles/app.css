@@ -41,17 +41,16 @@ button:hover {
   padding: 2em 1em;
 }
 
-.app-login-form .app-input {
-  padding-left: 30px;
+.app-login-form .login-email {
+  display: flex;
 }
-
-.app-login-form .app-input.login-email {
+.app-login-form .login-email-icon {
   background: url('/assets/images/email-icon.png');
   background-repeat: no-repeat;
   background-position: 7px 7px;
 }
 
-.app-login-form .app-input.login-password {
+.app-login-form .login-password-icon {
   background: url('/assets/images/asterisk-icon.png');
   background-repeat: no-repeat;
   background-position: 7px 7px;

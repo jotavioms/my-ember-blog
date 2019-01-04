@@ -1,26 +1,35 @@
 import Service, {inject as service} from '@ember/service';
-import fetch from 'fetch';
+import { bool } from '@ember/object/computed';
 
 export default Service.extend({
   store: service(),
   request: service(),
+  token: null,
+
+  isAuthenticated: bool('token'),
 
   // NAMED PARAMS
   // ADAPTER = DEFINE URL DO ENDPOINT, CONTRATO, ETC
   async login({ email, password}) {
-    //const request = this.get('request').request('login', {email, password})
-
-    const adapter = this.get('store').adapterFor('application');
-    const url = `${adapter.get('host')}/login`;
-
-    const user = await fetch(url, {
+    const requestService = this.get('request');
+    const options = {
       method: 'post',
-      body: JSON.stringify({ email, password}),
-    });
+      body: JSON.stringify({email, password}),
+    };
 
-    this.get('store').set('token', user.token);
+    try {
+      const response = await requestService.request('login', options);
 
-    debugger;
-    // this.get('store').set('token', user.token);
+      if (!response.ok) {
+        return false;
+      }
+
+      const data = await response.json();
+      this.set('token', data.token);
+      return true;
+    } catch (error) {
+      alert(error);
+      return false;
+    }
   },
 });

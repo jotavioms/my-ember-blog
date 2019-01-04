@@ -1,20 +1,23 @@
 import Controller from '@ember/controller';
 import {inject as service} from '@ember/service';
-import { observer } from '@ember/object';
 
 export default Controller.extend({
-  store: service(),
-  userToken: null,
+  auth: service(),
+  loginFailed: null,
 
-  async init(...args) {
-    this._super(...args);
+  actions: {
+    async onLogin({email, password}) {
+      const auth = this.get('auth');
+      const response = await auth.login({
+        email: email,
+        password: password,
+      });
 
-    const store = this.get('store');
-    this.set('userToken', store.get('token'));
+      if (!response) {
+        return false;
+      }
+
+      return this.transitionToRoute('blog-dashboard');
+    },
   },
-
-  hasUserToken: observer('userToken', function() {
-    debugger;
-    this.transitionToRoute('blog-dashboard');
-  }),
 });

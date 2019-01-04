@@ -1,59 +1,54 @@
 import Component from '@ember/component';
 import hbs from 'htmlbars-inline-precompile';
-import {inject as service} from '@ember/service';
 
 export default Component.extend({
-  store: service(),
-  auth: service(),
-
   classNames: [
     'app-login-form',
   ],
 
-  userEmail: null,
-  userPassword: null,
+  email: null,
+  password: null,
 
   actions: {
     async login() {
       const {
-        auth,
-        store,
-        userEmail,
-        userPassword,
-      } = this.getProperties('auth','store','userEmail','userPassword');
+        email,
+        password,
+        onLogin,
+      } = this.getProperties('email','password', 'onLogin');
 
-      try {
-        await auth.login({
-          email: userEmail,
-          password: userPassword,
-        });
+      // Nas versoes antigas do ember é utilizado o método this.sendAction()
+      const isSuccess = await onLogin({email, password});
 
-        debugger;
-
-        if(store.get('token')) {
-          debugger;
-          alert('tem token');
-        }
-
-      } catch(exception) {
-        alert(exception);
+      if(!isSuccess) {
+        this.set('showErrorMessage', true);
       }
     },
   },
 
   layout: hbs`
+    <!-- Colocar uma div com border, colocar imagem e input dentro, input sem estilo -->
+    <div class="login-email">
+      <i class="login-email-icon"></i>
+      {{app-input
+        value=email
+        classNames='login-email-input'
+        type='email'
+        placeholder='Email'
+      }}
+    </div>
+
     {{app-input
-      value=userEmail
-      classNames='login-email'
-      type='email'
-      placeholder='Email'
-    }}
-    {{app-input
-      value=userPassword
+      value=password
       classNames='login-password'
       type='password'
       placeholder='Password'
     }}
+
+    {{#if showErrorMessage}}
+     <p>Email ou senha inválidos</p>
+    {{/if}}
+
     {{#app-button click=(action 'login') classNames='primary'}}
       Login
     {{/app-button}}
