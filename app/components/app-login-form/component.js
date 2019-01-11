@@ -49,7 +49,7 @@ export default Component.extend({
      <p>Email ou senha inválidos</p>
     {{/if}}
 
-    {{#app-button click=(action 'login') classNames='primary'}}
+    {{#app-button onClick=(action 'login') classNames='primary'}}
       Login
     {{/app-button}}
   `,
