@@ -1,3 +1,4 @@
+
 {{outlet}}
 <h1>Blog Dashboard</h1>
 <br>
@@ -7,3 +8,6 @@
   {{post.content}}
   <br><br>
 {{/each}}
+{{#link-to 'create-post'}}
+  Criar Novos Posts
+{{/link-to}}

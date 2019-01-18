@@ -9,6 +9,7 @@ const Router = EmberRouter.extend({
 Router.map(function() {
   this.route('login');
   this.route('blog-dashboard');
+  this.route('create-post');
 });
 
 export default Router;
