@@ -1,2 +1,9 @@
 {{outlet}}
-Blog Dashboard
+<h1>Blog Dashboard</h1>
+<br>
+{{#each model as |post|}}
+  {{post.title}}
+  <br>
+  {{post.content}}
+  <br><br>
+{{/each}}
