@@ -1,0 +1,23 @@
+@import 'component/app-button';
+@import 'component/app-input';
+@import 'component/app-loading';
+@import 'component/app-login-form';
+
+button:not(.disabled):hover {
+  cursor: pointer;
+}
+
+.primary {
+  background-color: #3b5998;
+  color: white;
+}
+
+.primary:not(.disabled):hover {
+  background-color: #6897bb;
+  color: white;
+}
+
+.disabled {
+  background-color: #cccccc;
+  color: white;
+}
