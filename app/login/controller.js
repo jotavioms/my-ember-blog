@@ -17,7 +17,7 @@ export default Controller.extend({
         return false;
       }
 
-      return this.transitionToRoute('blog-dashboard');
+      return this.transitionToRoute('blog-posts');
     },
   },
 });
