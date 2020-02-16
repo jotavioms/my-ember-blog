@@ -9,8 +9,18 @@ export default Controller.extend({
       const store = this.get('store');
       const post = store.createRecord('post', {title, content});
 
+      if(!post) {
+        this.set('errorMessage', 'Não foi possível salvar seu post.')
+      }
+
+      alert('Seu post foi salvo com sucesso!');
+      this.transitionToRoute('blog-posts');
       return post;
       // return post.save();
-    }
+    },
+
+    returnToBlogPosts() {
+      return this.transitionToRoute('blog-posts');
+    },
   },
 });

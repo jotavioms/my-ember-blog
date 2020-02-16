@@ -1,8 +1,10 @@
-{{outlet}}
-{{#app-button onClick=(action 'createPost') classNames='primary'}}
-  Novo Post
-{{/app-button}}
-<br><br>
-{{#link-to 'blog-dashboard'}}
-  Voltar
-{{/link-to}}
+<h1>Create Post</h1>
+<br>
+{{app-create-post-form
+  createPost=(action 'createPost')
+  returnToBlogPosts=(action 'returnToBlogPosts')
+}}
+
+{{#if errorMessage}}
+  {{errorMessage}}
+{{/if}}
